@@ -8,7 +8,7 @@ signal_handler() {
 trap signal_handler INT
 
 HOVERFLY_JWT_SECRET=jwt-secret
-HOVERFLY_JWT_EXPIRE=72  # hours
+HOVERFLY_JWT_EXPIRE_HOURS=72
 HOVERFLY_ADMIN_NAME=super-admin
 HOVERFLY_ADMIN_PASS=weird-password
 HOVERFLY_ADMIN_PORT=8888
@@ -19,7 +19,7 @@ if test -f "$1" ; then
 fi
 
 export HoverflySecret=$HOVERFLY_JWT_SECRET \
-  HoverflyTokenExpiration=$HOVERFLY_JWT_EXPIRE
+  HoverflyTokenExpiration=$HOVERFLY_JWT_EXPIRE_HOURS
   /bin/hoverfly \
   -listen-on-host=0.0.0.0 \
   -webserver \
