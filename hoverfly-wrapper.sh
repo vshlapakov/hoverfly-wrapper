@@ -14,8 +14,10 @@ HOVERFLY_ADMIN_PASS=weird-password
 HOVERFLY_ADMIN_PORT=8888
 HOVERFLY_PROXY_PORT=8500
 
-if test -f "$1" ; then
-  source "$1"
+# allow to redefine it via environment variable
+HOVERFLY_SETTINGS_PATH=${HOVERFLY_SETTINGS_PATH:-'/mnt/mesos/sandbox/settings.sh'}
+if test -f "$HOVERFLY_SETTINGS_PATH" ; then
+  source "$HOVERFLY_SETTINGS_PATH"
 fi
 
 export HoverflySecret=$HOVERFLY_JWT_SECRET \
